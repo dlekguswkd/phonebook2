@@ -99,7 +99,6 @@ public class PhonebookDao {
 			   
 			   PersonVo personVo = new PersonVo(id, name, hp, company);
 			  
-			   
 			   personList.add(personVo);
 			   
 		   }
