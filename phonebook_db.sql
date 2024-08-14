@@ -57,12 +57,24 @@ values(null, '정우성', '010-1111-1111', '02-1111-1111');
 insert into person
 values(null, '이효리', '010-2222-2222', '02-2222-2222');
 
+-- 등록폼
+insert into person
+values(null, '이효리', '010-2222-2222', '02-2222-2222');
+
 -- 수정
 update person
 set name = '강호동',
 	hp = '010-9999-9999',
     company = '02-9999-9999'
 where person_id = 2;
+
+-- 수정폼
+select person_id,
+		name,
+        hp,
+        company
+from person
+where person_id = 1;
 
 -- 삭제
 delete from person
