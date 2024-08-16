@@ -19,7 +19,7 @@ public class PhonebookController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
-	// Controller 접수받는일
+	// Controller 접수받는일 (업무구분)
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		//action이 뭔지 알아야함
@@ -144,8 +144,24 @@ public class PhonebookController extends HttpServlet {
 			//리다이렉트
 			response.sendRedirect("/phonebook2/pbc?action=list");
 			
+		}else if ( "delete".equals(action) ) {		// 삭제 -------------------
+			
+			System.out.println("삭제");
+			
+			//파라미터 꺼내기
+			int no = Integer.parseInt(request.getParameter("no"));
+			
+			//Dao를 메모리에 올린다
+			PhonebookDao phonebookDao = new PhonebookDao();
+			
+			//phonebookDao를 통해서 삭제 delete를 시킨다
+			phonebookDao.deletePerson(no);
+			
+			//리다이렉트 시킨다
+			response.sendRedirect("/phonebook2/pbc?action=list");
+			
 		}
-		
+				
 	}
 		
 
