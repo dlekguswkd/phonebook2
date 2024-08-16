@@ -44,6 +44,7 @@ public class PhonebookController extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/list.jsp");
 			rd.forward(request, response);
 			
+			
 		}else if("writeform".equals(action)) {		// 등록폼 -------------------
 			
 			//접수 
@@ -53,6 +54,7 @@ public class PhonebookController extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/writeForm.jsp");
 			rd.forward(request, response);
 						
+			
 		}else if ("insert".equals(action)) {		//등록 -------------------
 			
 			//접수 
@@ -99,6 +101,7 @@ public class PhonebookController extends HttpServlet {
 			//http://localhost:8080 생략가능 (http://localhost:8080/phonebook2/pbc?action=list)
 			response.sendRedirect("/phonebook2/pbc?action=list");
 			
+			
 		}else if ("editform".equals(action)) {		// 수정폼 -------------------
 			
 			System.out.println("수정폼 업무");
@@ -122,6 +125,7 @@ public class PhonebookController extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/editForm.jsp");
 			rd.forward(request, response);
 		
+			
 		}else if ("update".equals(action)) {		// 수정 -------------------
 			
 			System.out.println("수정");
@@ -144,13 +148,16 @@ public class PhonebookController extends HttpServlet {
 			//리다이렉트
 			response.sendRedirect("/phonebook2/pbc?action=list");
 			
-		}else if ( "delete".equals(action) ) {		// 삭제 -------------------
+			
+		}else if ("delete".equals(action) ) {		// 삭제 -------------------
 			
 			System.out.println("삭제");
 			
 			//파라미터 꺼내기
+			// String 이면 상관없지만 숫자 int 이기 때문에 Integer.parseInt로 싸주기 (다 문자형이기 때문)
 			int no = Integer.parseInt(request.getParameter("no"));
 			
+			//삭제하기
 			//Dao를 메모리에 올린다
 			PhonebookDao phonebookDao = new PhonebookDao();
 			
@@ -160,6 +167,9 @@ public class PhonebookController extends HttpServlet {
 			//리다이렉트 시킨다
 			response.sendRedirect("/phonebook2/pbc?action=list");
 			
+			
+		}else {					// action 없을때 -------------------
+			System.out.println("action 없음");
 		}
 				
 	}

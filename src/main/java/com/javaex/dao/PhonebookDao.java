@@ -67,8 +67,8 @@ public class PhonebookDao {
    }
    
    
-	//사람 정보 삭제
-	public int deletePerson(int personId) {
+	//사람 정보 삭제하기
+	public int deletePerson(int no) {
 
 		int count = -1; 
 		
@@ -77,22 +77,21 @@ public class PhonebookDao {
 		try {
 			// 3. SQL문 준비 / 바인딩 / 실행
 
-			// - sql문 준비
+			// SQL문 준비
 			String query = "";
 			query += " delete from person ";
-			query += " where person_id = ? ";
+			query += " where person_id = ? ";	// 겹치지 않는 정보를 줘야 내가 원하는것만 지워짐
 
-			// - 바인딩
+			// 바인딩
 			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, personId);
+			pstmt.setInt(1, no);
 
-			// - 실행
+			// 실행
 			count = pstmt.executeUpdate();
 
 
-
 			// 4.결과처리
-			System.out.println(count + "건 삭제 되었습니다.");
+			System.out.println(count + "건 삭제");
 
 			
 		}  catch (SQLException e) {
@@ -102,9 +101,9 @@ public class PhonebookDao {
 		this.close();
 
 		return count;
+		
 	}
 	
-    
    
    //사람 정보 수정하기 1명
    public int updatePerson(PersonVo personVo) {
@@ -240,7 +239,7 @@ public class PhonebookDao {
 	   
 	   this.close();
 	   
-	   System.out.println(count);
+	   System.out.println(count + "건 등록");
 	   
 	   return 0;
 	   

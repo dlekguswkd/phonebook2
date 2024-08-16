@@ -42,7 +42,7 @@
 	
 	<br><br>
 	<!-- form 밖에 만들기 -->
-	<a href="#">리스트로 가기</a>
+	<a href="/phonebook2/pbc?action=list">리스트로 가기</a>
 	
 </body>
 </html>

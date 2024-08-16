@@ -32,8 +32,8 @@
 				<td><%=personList.get(i).getName() %></td>
 			</tr>
 			<tr>
-				<th>핸드폰(hp)</td>
-				<td><%=personList.get(i).getHp() %></th>
+				<th>핸드폰(hp)</th>
+				<td><%=personList.get(i).getHp() %></td>
 			</tr>
 			<tr>
 				<th>회사(company)</th>
@@ -41,7 +41,7 @@
 			</tr>
 			<tr>
 				<td><a href="http://localhost:8080/phonebook2/pbc?action=editform&no=<%=personList.get(i).getPersonId()%>">[수정폼으로 이동]</a></td>
-				<td>[삭제]</td>
+				<td><a href="/phonebook2/pbc?action=delete&no=<%=personList.get(i).getPersonId() %>">[삭제]</a></td>
 			</tr>
 		</tbody>
 	</table>
@@ -49,7 +49,7 @@
 	<% } %>
 	
 	<br>
-	<a href="#">등록폼으로 이동</a>
+	<a href="/phonebook2/pbc?action=writeform">등록폼으로 이동</a>
 
 </body>
 </html>
